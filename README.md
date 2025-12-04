@@ -1,2 +1,16 @@
-# daily-activity-bot
-A simple Python script updated daily to keep the GitHub account active.
+
+import datetime
+import json
+import os
+
+def log_activity():
+    today = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    data = {"last_run": today}
+
+    with open("activity_log.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+    print(f"Activity logged at: {today}")
+
+if __name__ == "__main__":
+    log_activity()
